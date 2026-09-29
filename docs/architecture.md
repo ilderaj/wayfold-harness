@@ -11,7 +11,7 @@ Codex owns tools, execution, permissions, model selection and worker lifecycle.
 WFH owns only workflow-specific instructions and the minimum deterministic
 helpers for identity and durable planning. Independent external skills are
 selected through the Host's ordinary discovery and invocation behavior.
-No WFH router, global dispatcher, ambient hook, MCP server or scheduler is added.
+No WFH router, global dispatcher, MCP server or scheduler is added. Native plugin hooks (SessionStart, UserPromptSubmit, Stop) are included only for exact-bound tracked/planned tasks. They require Host trust and are unloaded with the plugin; no global hook registration is installed.
 
 Quick requests do not acquire planning files. Tracked tasks retain the exact
 Task ID and three-file authority. Reports and receipts are evidence, never a
@@ -41,3 +41,9 @@ must have one authoritative writer and reject ambiguous old/new state.
 
 The candidate is implemented under `wfh/skills` and built by
 `packages/wfh-plugin-kit`. Historical `harness/` code is retained in Git history and cold migration backups. Its global installation chain is retired and is not a supported WayFold entry.
+
+## Tracked task hooks
+
+An exact session-to-task binding is the opt-in for both planned and tracked work. No binding means direct work: no planning context or state writes, regardless of other active tasks. Entry restores the three-file authority without reading transcript text or guessing from prompt keywords. Stop requests one bounded reconciliation continuation only when progress.md has not changed this turn. It never closes, archives, reopens, or performs external writes. A checkpoint hash is presence evidence, not content-quality acceptance. Host interruption/crash can bypass Stop.
+
+Hook receipts hold one latest turn/hash per session under `.wfh/planning-with-files/hook-turns/`; they are disposable and contain no prompts or secrets. Native hook trust is separate from plugin enablement. Off/untrusted hooks do not run; independent user hooks are outside WFH.

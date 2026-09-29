@@ -7,7 +7,7 @@ const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const expected = ['linear-work-control', 'planning-with-files', 'wayfold'];
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
-export async function build({ source = path.join(repo, 'wfh'), output = path.join(repo, 'dist/wayfold-harness'), version = '3.0.0-beta.1' } = {}) {
+export async function build({ source = path.join(repo, 'wfh'), output = path.join(repo, 'dist/wayfold-harness'), version = '3.0.0-beta.2' } = {}) {
   source = path.resolve(source); output = path.resolve(output);
   if (output === source || output.startsWith(source + path.sep)) throw Error('output cannot be inside source');
   if (path.basename(output) !== 'wayfold-harness') throw Error('output folder must match plugin name');
@@ -27,6 +27,7 @@ export async function build({ source = path.join(repo, 'wfh'), output = path.joi
     }
   }
   await visit(path.join(source, 'skills'), 'skills');
+  await visit(path.join(source, 'hooks'), 'hooks');
   for (const skill of expected) if (!entries.some(([name]) => name === `skills/${skill}/SKILL.md`)) throw Error('missing skill entry');
   entries.push(['NOTICE.md', await readFile(path.join(source, 'NOTICE.md'))]);
   const manifest = {
@@ -34,7 +35,7 @@ export async function build({ source = path.join(repo, 'wfh'), output = path.joi
     description: 'Thin task continuity and evidence checks for Codex.',
     author: {name: 'WayFold Harness'}, license: 'UNLICENSED', skills: './skills/',
     interface: {displayName: 'WayFold Harness', shortDescription: 'Thin task continuity and evidence checks',
-      longDescription: 'Three on-demand skills. No global policies, ambient hooks, scheduler, or external-skill repackaging.',
+      longDescription: 'Three skills with plugin-owned recovery and wrap-up hooks for exact-bound tracked/planned tasks. No global policy or scheduler.',
       developerName: 'WayFold Harness', category: 'Productivity', capabilities: ['Read', 'Write'],
       defaultPrompt: ['Resume this tracked task with its existing plan and evidence.']}
   };

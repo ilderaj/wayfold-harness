@@ -27,3 +27,9 @@ No project enable command, adoption cron or global hook is needed for WFH.
 
 Version 3 remains a candidate until the migration dossier records live
 installation and behavior acceptance.
+
+## Automatic tracked/planned recovery and wrap-up
+
+For planned/tracked work, the skill binds the exact task and thread once. Plugin-native hooks then restore it at entry and check progress before ending each turn. If a checkpoint is missing, Stop asks the assistant for one local wrap-up pass; waiting or blocked tasks stay waiting or blocked. This is not automatic task closure. Direct tasks remain unbound and bypass planning hooks. To intentionally switch a bound thread to direct mode, use the planning helper `clear-thread-binding`, preserving its plan.
+
+Review and trust the plugin hooks in Codex `/hooks` before first use or after a changed definition. Installation alone does not grant hook trust. Start a fresh context after updates. Do not install global hooks as a workaround.

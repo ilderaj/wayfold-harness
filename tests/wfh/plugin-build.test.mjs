@@ -16,6 +16,9 @@ test('candidate builds reproducibly and refuses overwriting a package', async ()
     assert.equal(manifest.name,'wayfold-harness');
     for (const field of ['hooks','mcpServers','apps']) assert.equal(manifest[field],undefined);
     assert.equal(a.receipt.files.filter(x=>x.path.endsWith('/SKILL.md')).length,3);
+    const hooks = JSON.parse(await readFile(path.join(a.output, 'hooks/hooks.json')));
+    assert.deepEqual(Object.keys(hooks.hooks), ['SessionStart','UserPromptSubmit','Stop']);
+    assert.ok(a.receipt.files.some(x=>x.path === 'hooks/tracked_task.py'));
     assert.ok(!a.receipt.files.some(x=> /kami|pen-design|night-queue|\.pyc|__pycache__/.test(x.path)));
     await assert.rejects(build({output:a.output}), /EEXIST/);
   } finally {await rm(temp,{recursive:true,force:true});}
