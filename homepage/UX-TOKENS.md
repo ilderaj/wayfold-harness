@@ -1,8 +1,8 @@
-# WebApp UX Tokens & Component Standard — "Paper & Ink" (v2)
+# WebApp UX Tokens & Component Standard — "Paper & Ink" (v3)
 
-Status: **active standard** (2026-08-09, v2) — the durable visual contract for
-the Superpowering with Files homepage (`homepage/`). The single source of truth
-for values is `src/theme.css`; this file mirrors it for review and pins the
+Status: **active standard** (2026-09-29, v3) — the durable visual contract for
+the WayFold Harness homepage (`homepage/`). The single source of truth for
+values is `src/theme.css`; this file mirrors it for review and pins the
 component behavior. Consumed by `src/theme.css` + `src/styles.css`; historical
 design exports are kept under `designs/`.
 
@@ -10,8 +10,12 @@ design exports are kept under `designs/`.
 
 The page follows the restraint of [opencodex.me/zh-cn](https://opencodex.me/zh-cn/)
 and [cursor.com](https://cursor.com/), with interaction components aligned to
-[shadcn/ui](https://ui.shadcn.com/) semantics. The v1 warm-editorial contract
-(serif display, cream/coral fills, large radii, pill topbar) is fully removed.
+[shadcn/ui](https://ui.shadcn.com/) semantics. The v3 page expresses a thin
+Codex plugin through one recurring motif — the **file row** — instead of
+illustration: the Trio, the authority card and the hook receipts are all mono
+filenames in hairline rows. The v1 warm-editorial contract (serif display,
+cream/coral fills, large radii, pill topbar) and the v2 SWF-era brand marks are
+fully removed.
 
 Shared restraint checklist (from the 2026-08-09 reference audit):
 
@@ -96,8 +100,66 @@ Elevation: `--shadow-xs 0 1px 2px rgba(31,30,26,0.04)` (hover lift) ·
 
 - `--card` fill, hairline `--border`, radius by elevation (`md` inner cells,
   `lg` nested, `xl` cards/hero mock). `shadow-sm` only on the two raised
-  anchor surfaces (product mock, system panel); `shadow-xs` on hover. No
+  anchor surfaces (product mock, hero card); `shadow-xs` on hover. No
   nested card walls: inner groups are hairline rows or `--background` cells.
+
+### File row (page motif)
+
+- `.file-list` is a grid of `.file-row` rows: flex-wrap, baseline, `gap: 4px
+  12px`, `padding: 9px 0`, 1px top hairline. The filename renders as `<code
+  class="file-name">` — the same inline-token chip used in prose (mono 12.5px,
+  650) — with the muted `.file-role` sentence beside it. The dark
+  `.file-list--dark` variant inside `.authority-card` inverts the pair to the
+  `--on-dark` values over the on-dark hairline.
+
+### Inline file tokens
+
+- One chip contract for every `.md`/path token in prose: `p code`, `li code`
+  and `.matrix-cell code` share mono 0.92em, `--surface` fill, `--ink` text and
+  `--radius-sm`. A token must never be a chip in one section and bare
+  monospace in another.
+
+### Hero fact row
+
+- `.hero-facts` is a full-width 4-column strip between two hairlines, not a
+  card: `.fact` cells carry a left hairline divider, an 11px uppercase muted
+  `dt` and a 20px mono 700 ink `dd`. Facts, never decorative big numbers.
+  At ≤920px it reflows to two columns (odd cells lose the left divider); at
+  ≤620px it stacks with horizontal dividers.
+
+### Skip link
+
+- `.skip-link` is a fixed ink chip above the topbar, hidden with
+  `transform: translateY(-180%)` until `:focus-visible`, and it is excluded
+  from motion along with the other interactive transitions.
+
+### Layer stack & routes
+
+- `.layer-stack` is one white card of hairline rows (`name | role | body`),
+  making the Host / thin-layer / independent-skills boundary visible without a
+  diagram asset. `.routes` pairs the `quick · tracked · deep` lanes as
+  hairline cards with a 6px coral bullet; the note beside the label carries
+  the current-round caveat.
+
+### Hooks panel
+
+- `.hook-list` is one white card of hairline rows keyed by mono event names
+  (SessionStart · UserPromptSubmit, Stop), followed by a labelled mono command
+  cell on `--background`. `.hook-receipt` sits beside it on the quiet
+  `--surface` fill. Section-level asides use `.section-note` (13.5px muted,
+  max 760px) instead of another card.
+
+### Matrix cells (proof)
+
+- `--background` fill, hairline border, `md` radius, ink `strong` title and
+  `--muted-foreground` body. A muted fill behind muted text is a defect the
+  stylesheet test guards against.
+
+### Evidence band
+
+- One `--surface` band with a 1.15fr/auto split: title + muted body left, and
+  the four evidence kinds as hairline pills right. It states the evidence
+  ladder; it is not a feature list.
 
 ### Code / terminal
 
@@ -108,9 +170,12 @@ Elevation: `--shadow-xs 0 1px 2px rgba(31,30,26,0.04)` (hover lift) ·
 
 ### Topbar & section rhythm
 
-- Topbar: full-width 60px hairline bar (`border-bottom: 1px solid --line`),
-  sticky, not a floating pill. Brand mark is a dark 28px square with `md`
-  radius.
+- Topbar: `.nav` carries `.shell`, so the 60px sticky hairline bar is capped at
+  `min(1180px, calc(100% - 40px))` with 20px inner padding rather than bleeding
+  edge to edge; it is never a floating pill. Brand mark is a dark 28px square
+  with `md` radius. At ≤920px the bar wraps and the anchors stay reachable as a
+  horizontally scrollable row; at ≤620px brand and CTA share one row with the
+  anchors on a second row.
 - Sections: `border-top: 1px solid --line`, 52px vertical padding, `.shell`
   width `min(1180px, calc(100% - 40px))`.
 - Kickers: muted 12px uppercase, `0.08em` tracking — labels, not accents.
@@ -125,15 +190,24 @@ Elevation: `--shadow-xs 0 1px 2px rgba(31,30,26,0.04)` (hover lift) ·
 ## Archived Design Artifacts
 
 - `designs/swf-ux-tokens.pen` and the exported PNGs under `designs/shots/`
-  (`ux-tokens-v2.png`, `hero-v2.png`) are **historical artifacts** from the
-  v2 rebuild. The Pen.app (Pencil) editor has been retired (2026-08-09), so
-  the `.pen` file is no longer an editable design source.
+  (`ux-tokens-v2.png`, `hero-v2.png`, `new-*.png`, `old-*.png`) are
+  **historical artifacts** from the v1/v2 rebuilds, when the page still
+  described the retired SWF Trio runtime. The Pen.app (Pencil) editor is
+  retired (2026-08-09), so the `.pen` file is no longer an editable source.
+- `designs/shots/v3-desktop.png` (1440px, full page) and
+  `designs/shots/v3-mobile.png` (390px, full page) are the v3 verification
+  record, captured from the built `dist/` for this contract.
 - The live visual contract is `src/theme.css` + this file; the design tokens
   and component behavior below are the operative standard.
+- Brand assets are `public/favicon.svg` (ink square, paper file, coral fold,
+  three hairlines for the Trio) and `public/wfh-social.svg` with its rendered
+  `public/wfh-social.png` (1200×630). The retired SWF favicon concepts were
+  removed in v3.
 
 ## Governance
 
 Changing tokens or components requires: (1) keeping the test-pinned contract
 (`src/homepage-styles.test.mjs` — palette hexes, font stacks, class hooks,
-media queries), (2) updating this file and `DESIGN.md`, (3) re-running
-`npm run verify:homepage` and the visual screenshot pass before release.
+media queries, the matrix-cell readability guard), (2) updating this file and
+`DESIGN.md`, (3) re-running `npm run verify:homepage` and the visual screenshot
+pass (desktop 1440px plus a 390px-wide viewport) before release.

@@ -7,20 +7,20 @@ const compactHtml = html.replace(/\s+/g, ' ');
 
 const expectedUrl = 'https://vibing.paymond.me/wayfold-harness/';
 const expectedImage = 'https://vibing.paymond.me/wayfold-harness/wfh-social.png';
-const expectedTitle = 'WayFold Harness | Thin workflows for Codex';
+const expectedTitle = 'WayFold Harness | Durable planning for Codex';
 const expectedDescription =
   'A thin Codex plugin for durable planning, relevant quality checks, and independently supplied professional skills.';
 const expectedKeywords = [
   'Codex',
   'WayFold Harness',
-  'managed native host',
-  'planning trio',
-  'dev',
-  'office',
-  'safety',
+  'thin plugin',
+  'planning with files',
+  'durable planning',
+  'task_plan.md',
+  'findings.md',
+  'progress.md',
+  'native hooks',
   'independent skills',
-  'native Goal',
-  'continuation',
   'no second runner'
 ];
 
@@ -49,31 +49,20 @@ test('defines Open Graph and Twitter metadata for repository sharing', () => {
   }
 });
 
-test('links a local favicon asset from the homepage shell', () => {
+test('links the single WayFold favicon asset from the homepage shell', () => {
   assert.match(compactHtml, /<link rel="icon" type="image\/svg\+xml" href="\/favicon\.svg" \/>/);
 });
 
-test('points social sharing metadata at a published image asset and favicon files', () => {
-  const publicImagePath = new URL('../public/wfh-social.png', import.meta.url);
-  const faviconPath = new URL('../public/favicon.svg', import.meta.url);
-  const faviconCornerSparkPath = new URL('../public/favicon-corner-spark.svg', import.meta.url);
-  const faviconFoldedFilePath = new URL('../public/favicon-folded-file.svg', import.meta.url);
-  const faviconStackedFilesPath = new URL('../public/favicon-stacked-files.svg', import.meta.url);
-  const faviconStackedFilesCompactPath = new URL('../public/favicon-stacked-files-compact.svg', import.meta.url);
-  const faviconStackedFilesFoldedPath = new URL('../public/favicon-stacked-files-folded.svg', import.meta.url);
-  const faviconStackedFilesLayeredPath = new URL('../public/favicon-stacked-files-layered.svg', import.meta.url);
+test('ships exactly the published brand assets under public/', () => {
+  const publicDir = new URL('../public/', import.meta.url);
+  const expectedAssets = ['favicon.svg', 'wfh-social.svg', 'wfh-social.png'];
 
-  assert.equal(existsSync(publicImagePath), true);
-  assert.equal(existsSync(faviconPath), true);
-  assert.equal(existsSync(faviconCornerSparkPath), true);
-  assert.equal(existsSync(faviconFoldedFilePath), true);
-  assert.equal(existsSync(faviconStackedFilesPath), true);
-  assert.equal(existsSync(faviconStackedFilesCompactPath), true);
-  assert.equal(existsSync(faviconStackedFilesFoldedPath), true);
-  assert.equal(existsSync(faviconStackedFilesLayeredPath), true);
+  for (const asset of expectedAssets) {
+    assert.equal(existsSync(new URL(asset, publicDir)), true, `Missing public asset: ${asset}`);
+  }
 });
 
-test('keeps V2 host, planning, fallback, and runtime facts aligned across metadata and JSON-LD', () => {
+test('keeps planning, host, and runtime facts aligned across metadata and JSON-LD', () => {
   const keywords = expectedKeywords.join(', ');
   const jsonLdMatch = html.match(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/);
 

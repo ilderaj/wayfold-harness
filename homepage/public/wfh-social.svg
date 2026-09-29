@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#f7f7f4"/><rect x="72" y="78" width="94" height="94" rx="18" fill="#1b342b"/><path d="M96 104h46v42h-46z M107 94h36v42" fill="none" stroke="#e8efb6" stroke-width="5"/><text x="72" y="318" font-family="Arial,sans-serif" font-size="84" font-weight="700" fill="#17251f">WayFold Harness</text><text x="76" y="399" font-family="Arial,sans-serif" font-size="34" fill="#465b50">Thin workflows. Durable planning.</text><path d="M76 478h1048" stroke="#ced5c7" stroke-width="2"/><text x="76" y="542" font-family="Arial,sans-serif" font-size="25" fill="#465b50">One native Codex plugin · Three focused skills</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="WayFold Harness social card">
+  <rect width="1200" height="630" fill="#f7f7f4" />
+  <rect x="72" y="78" width="94" height="94" rx="18" fill="#1f1e1a" />
+  <path d="M99 106h29l12 12v36H99z" fill="#f7f7f4" />
+  <path d="M128 106l12 12h-12z" fill="#cc785c" />
+  <g fill="#1f1e1a" opacity="0.28">
+    <rect x="108" y="132" width="16" height="3" rx="1.5" />
+    <rect x="108" y="140" width="16" height="3" rx="1.5" />
+  </g>
+  <text x="72" y="322" font-family="Arial, Helvetica, sans-serif" font-size="82" font-weight="700" fill="#1f1e1a">WayFold Harness</text>
+  <text x="76" y="402" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#6e6c65">Three files hold the plan. Codex runs the work.</text>
+  <path d="M76 478h1048" stroke="#e3e2dd" stroke-width="2" />
+  <text x="76" y="540" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#6e6c65">Native Codex plugin · Three skills · no second runner</text>
+  <circle cx="1058" cy="531" r="7" fill="#cc785c" />
+</svg>
