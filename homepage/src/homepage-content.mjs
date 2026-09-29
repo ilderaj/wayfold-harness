@@ -1,12 +1,12 @@
 export const homepageSectionOrder = ['hero', 'problem', 'system', 'workflow', 'start'];
 
-const githubUrl = 'https://github.com/ilderaj/superpowering-with-files';
+const githubUrl = 'https://github.com/ilderaj/wayfold-harness';
 const workflowUrl = `${githubUrl}/blob/main/docs/workflows.md`;
 const readmeUrl = `${githubUrl}/blob/main/README.md`;
 
 export const homepageContent = {
   topbar: {
-    brandLabel: 'Superpowering With Files',
+    brandLabel: 'WayFold Harness',
     brandHref: '#top',
     links: [
       { label: 'Why', href: '#problem' },
@@ -26,29 +26,29 @@ export const homepageContent = {
   },
   hero: {
     headingId: 'hero-title',
-    eyebrow: 'Trio v2 for Codex',
+    eyebrow: 'A thin Codex plugin',
     headline: 'Plan in one session. Execute with proof.',
     lede:
-      'Codex is the managed native host. Other hosts use a generic/manual fallback; the Trio keeps three durable task files and selects one pack for each task.',
+      'Keep long work recoverable with three planning files. Use the professional skills you choose, while Codex handles execution and permissions.',
     actions: [
       { label: 'View source', href: githubUrl, variant: 'primary', external: true },
       { label: 'Read workflow', href: workflowUrl, variant: 'secondary', external: true }
     ],
     proofPoints: [
-      { value: '1', label: 'managed native host: Codex' },
+      { value: '1', label: 'native host: Codex' },
       { value: '3', label: 'only durable task files' },
-      { value: '3', label: 'selected packs: dev, office, safety' },
+      { value: '3', label: 'focused skill entries' },
       { value: '0', label: 'second runners' }
     ],
     terminal: {
-      title: './scripts/harness',
+      title: 'WayFold Harness',
       lines: [
-        { tone: 'cmd', prefix: '$', text: './scripts/harness trio' },
+        { tone: 'cmd', prefix: '$', text: '$wayfold-harness:wayfold' },
         { tone: 'dim', text: 'Host owns lifecycle, permissions, and continuation.' },
         { tone: 'hot', text: 'task_plan.md · findings.md · progress.md' },
-        { tone: 'hot', text: 'one selected pack: dev / office / safety' },
+        { tone: 'hot', text: 'quality references only when the task needs them' },
         { tone: 'break' },
-        { tone: 'cmd', prefix: '$', text: 'npm run plugin:verify' },
+        { tone: 'cmd', prefix: '$', text: 'npm run verify:wfh' },
         { tone: 'dim', text: 'Requested model and effort are intent; actual is unknown without Host evidence.' }
       ]
     },
@@ -63,20 +63,20 @@ export const homepageContent = {
         },
         {
           number: '2',
-          title: 'Select one pack',
-          body: 'Each task selects one pack: dev, office, or safety.'
+          title: 'Use the right method',
+          body: 'Use relevant installed skills from any author; keep project knowledge with the project.'
         },
         {
           number: '3',
           title: 'Keep Host control',
-          body: 'Worker results are candidates until the main session or Chief accepts them.'
+          body: 'Worker results are candidates until the main session accepts them.'
         }
       ]
     }
   },
   problem: {
     id: 'problem',
-    kicker: 'Why Trio v2',
+    kicker: 'Why WayFold',
     title: 'Avoid a second control plane.',
     body:
       'Durable task state and long-task runtime should stay small, visible, and native to the Host.',
@@ -87,7 +87,7 @@ export const homepageContent = {
       {
         icon: '01',
         title: 'Host boundaries blur',
-        body: 'Codex stays managed and native; every other host is an honest generic/manual fallback.'
+        body: 'Codex supplies execution and permissions. WFH does not add a second runner or model router.'
       },
       {
         icon: '02',
@@ -108,7 +108,7 @@ export const homepageContent = {
   },
   system: {
     id: 'system',
-    kicker: 'How Trio v2 works',
+    kicker: 'How WayFold works',
     title: 'Keep the authority small and the runtime native.',
     body:
       'The Trio is the durable authority. Native Goal and continuation run long work with no second runner.',
@@ -124,9 +124,9 @@ export const homepageContent = {
         body: 'Tracked work lives only in task_plan.md, findings.md, and progress.md.'
       },
       {
-        label: 'Packs',
-        title: 'Choose one capability',
-        body: 'Each task selects exactly one pack: dev, office, or safety.'
+        label: 'Skills',
+        title: 'Load only what is needed',
+        body: 'A workflow entry, planning continuity and optional Linear coordination.'
       },
       {
         label: 'Runtime',
@@ -148,11 +148,11 @@ export const homepageContent = {
         rows: [
           [
             { title: 'Core state', body: 'Only task_plan.md, findings.md, and progress.md live under planning/active/<task-id>/.' },
-            { title: 'Selected pack', body: 'Each task uses one selected pack: dev, office, or safety.' }
+            { title: 'Relevant method', body: 'External methods stay independent; WFH retains only short quality contracts.' }
           ],
           [
             { title: 'Route', body: 'Quick and tracked are routes; deep is a current-round reasoning choice.' },
-            { title: 'Acceptance', body: 'Worker results remain candidates until the main session or Chief accepts them.' }
+            { title: 'Acceptance', body: 'Worker results remain candidates until the main session accepts them.' }
           ]
         ]
       },
@@ -166,7 +166,7 @@ export const homepageContent = {
             { title: 'Long tasks', body: 'Native Goal and continuation run long work with no second runner.' }
           ],
           [
-            { title: 'Managed native host', body: 'Codex is the managed native host; other hosts remain generic/manual fallback.' },
+            { title: 'Native host', body: 'One Codex plugin. No ambient hooks or global policy installation.' },
             { title: 'Proof path', body: 'Source and workflow docs stay visible before anyone chooses an installation command.' }
           ]
         ]
@@ -176,18 +176,18 @@ export const homepageContent = {
   start: {
     id: 'start',
     kicker: 'Start here',
-    title: 'Start with Codex and the Trio.',
+    title: 'Start with the WayFold candidate.',
     body:
-      'Install the private Codex plugin, then use the small task command surface when it fits your work.',
-    quickStartTitle: 'Public commands',
+      'Version 3 is a migration candidate. Inspect the source and validation before adopting it; live cutover is tracked separately.',
+    quickStartTitle: 'Candidate checks',
     quickStartBody: 'The command names stay explicit so each step remains easy to inspect before use.',
     commands: [
       'codex plugin list --json',
-      'npm run plugin:verify',
-      'npm run verify:trio',
-      './scripts/harness trio',
-      './scripts/harness checkpoint',
-      './scripts/harness token-audit'
+      'npm run verify:wfh',
+      'npm run wfh:build',
+      '$wayfold-harness:wayfold',
+      '$wayfold-harness:planning-with-files',
+      '$wayfold-harness:linear-work-control'
     ],
     cta: {
       title: 'Read the README once the repo proof is enough.',
@@ -197,7 +197,7 @@ export const homepageContent = {
     }
   },
   footer: {
-    left: 'Trio v2 workflow for Codex.',
+    left: 'WayFold Harness · Codex plugin candidate.',
     right: 'Native Host control · repo-native proof',
     github: {
       label: 'View source',

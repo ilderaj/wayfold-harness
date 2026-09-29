@@ -7,7 +7,7 @@ on:
     paths:
       - 'homepage/**'
       - '.github/workflows/homepage-deploy.yml'
-      - 'docs/install/homepage-cloudflare-worker.md'
+      - 'docs/migration.md'
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   deploy-homepage:
-    if: ${{ github.repository == 'ilderaj/superpowering-with-files' }}
+    if: ${{ github.repository == 'ilderaj/wayfold-harness' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -52,10 +52,10 @@ jobs:
 
       - name: Smoke check production homepage
         run: |
-          url="https://vibing.paymond.me/superpowering-with-files"
+          url="https://vibing.paymond.me/wayfold-harness"
           for attempt in 1 2 3 4 5; do
             status=$(curl -sS -o /tmp/homepage-smoke.html -w "%{http_code}" -L --max-redirs 5 --connect-timeout 20 "$url")
-            if [ "$status" = "200" ] && grep -q "<title>Superpowering with Files | Trio v2 for Codex</title>" /tmp/homepage-smoke.html; then
+            if [ "$status" = "200" ] && grep -q "<title>WayFold Harness | Thin workflows for Codex</title>" /tmp/homepage-smoke.html; then
               exit 0
             fi
             if [ "$attempt" -lt 5 ]; then

@@ -1,4 +1,4 @@
-name: Repo Verify
+name: WayFold Harness Verify
 
 on:
   pull_request:
@@ -36,28 +36,5 @@ jobs:
       - name: Install homepage dependencies
         run: npm ci --prefix homepage
 
-      - name: Install Office verification tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libreoffice poppler-utils
-
       - name: Run repository verification
-        env:
-          RENDER_VERIFY_REQUIRED: "1"
         run: npm run verify:all
-
-  dsh-verify:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v6
-      - name: Set up Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '22'
-      - name: Install tested pnpm version
-        run: npm install --global pnpm@11.1.0
-      - name: Install isolated dsh dependencies
-        run: pnpm --dir plugins/dsh install --frozen-lockfile
-      - name: Verify optional dsh adapter
-        run: npm run verify:dsh

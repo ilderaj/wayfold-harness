@@ -5,20 +5,20 @@ import { existsSync, readFileSync } from 'node:fs';
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const compactHtml = html.replace(/\s+/g, ' ');
 
-const expectedUrl = 'https://ilderaj.github.io/superpowering-with-files/';
-const expectedImage = 'https://ilderaj.github.io/superpowering-with-files/og-image.png';
-const expectedTitle = 'Superpowering with Files | Trio v2 for Codex';
+const expectedUrl = 'https://vibing.paymond.me/wayfold-harness/';
+const expectedImage = 'https://vibing.paymond.me/wayfold-harness/wfh-social.png';
+const expectedTitle = 'WayFold Harness | Thin workflows for Codex';
 const expectedDescription =
-  'Trio v2 for Codex: managed native host, planning trio, dev/office/safety, manual fallback, native Goal/continuation, and no second runner.';
+  'A thin Codex plugin for durable planning, relevant quality checks, and independently supplied professional skills.';
 const expectedKeywords = [
   'Codex',
-  'Trio v2',
+  'WayFold Harness',
   'managed native host',
   'planning trio',
   'dev',
   'office',
   'safety',
-  'manual fallback',
+  'independent skills',
   'native Goal',
   'continuation',
   'no second runner'
@@ -35,7 +35,7 @@ test('defines search-ready title, description, canonical, robots, and theme colo
 test('defines Open Graph and Twitter metadata for repository sharing', () => {
   for (const tag of [
     '<meta property="og:type" content="website" />',
-    '<meta property="og:site_name" content="Superpowering with Files" />',
+    '<meta property="og:site_name" content="WayFold Harness" />',
     `<meta property="og:url" content="${expectedUrl}" />`,
     `<meta property="og:title" content="${expectedTitle}" />`,
     `<meta property="og:description" content="${expectedDescription}" />`,
@@ -54,7 +54,7 @@ test('links a local favicon asset from the homepage shell', () => {
 });
 
 test('points social sharing metadata at a published image asset and favicon files', () => {
-  const publicImagePath = new URL('../public/og-image.png', import.meta.url);
+  const publicImagePath = new URL('../public/wfh-social.png', import.meta.url);
   const faviconPath = new URL('../public/favicon.svg', import.meta.url);
   const faviconCornerSparkPath = new URL('../public/favicon-corner-spark.svg', import.meta.url);
   const faviconFoldedFilePath = new URL('../public/favicon-folded-file.svg', import.meta.url);
@@ -81,13 +81,12 @@ test('keeps V2 host, planning, fallback, and runtime facts aligned across metada
   assert.match(compactHtml, new RegExp(`<meta name="keywords" content="${keywords}" \\/>`));
 
   const jsonLd = JSON.parse(jsonLdMatch[1]);
-  assert.equal(jsonLd.name, 'Superpowering with Files');
+  assert.equal(jsonLd.name, 'WayFold Harness');
   assert.equal(jsonLd.description, expectedDescription);
   assert.deepEqual(jsonLd.keywords, expectedKeywords);
 
-  for (const requiredFact of ['managed native host', 'planning trio', 'manual fallback']) {
-    assert.match(expectedDescription, new RegExp(requiredFact, 'i'));
-    assert.ok(expectedKeywords.includes(requiredFact), `Missing required keyword: ${requiredFact}`);
+  for (const requiredFact of ['Codex plugin', 'durable planning', 'professional skills']) {
+    assert.match(jsonLd.description, new RegExp(requiredFact, 'i'));
   }
 
   for (const retiredClaim of ['Cursor', 'GitHub Copilot', 'Claude Code', 'governance', 'multi-host']) {
