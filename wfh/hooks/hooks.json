@@ -1,0 +1,8 @@
+{
+  "description": "WFH exact-bound tracked/planned task recovery and turn wrap-up. Unbound direct tasks are ignored.",
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "python3 \"${PLUGIN_ROOT}/hooks/tracked_task.py\"", "timeout": 5}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "python3 \"${PLUGIN_ROOT}/hooks/tracked_task.py\"", "timeout": 5}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "python3 \"${PLUGIN_ROOT}/hooks/tracked_task.py\"", "timeout": 5}]}]
+  }
+}

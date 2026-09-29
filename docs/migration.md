@@ -1,6 +1,6 @@
 # Migrating to WayFold Harness
 
-WayFold Harness continues the SWF lineage as a native Codex plugin. Version 3.0.0-beta.1 contains three skills and no global policies, ambient hooks, scheduler, or external-skill mirror.
+WayFold Harness continues the SWF lineage as a native Codex plugin. Version 3 contains three skills. The tracked-hooks update adds native plugin entry/wrap-up hooks for exact-bound tasks; direct tasks remain untouched. No global policies, scheduler, or external-skill mirror are installed.
 
 Install `wayfold-harness` through the native plugin manager. Before removing an old installation, preserve task data and personal assets. Remove old global/project SWF policy blocks and hook registrations using reviewed backups. Disable independent scheduled jobs that load retired source. Uninstall the old plugin; do not keep both versions active.
 
@@ -13,3 +13,5 @@ Figma project rules, Kami and personal templates are independent user assets. Pe
 The beta has deterministic lifecycle/identity tests and native install/discovery/switch checks. Complete paired model-outcome and cost comparisons are not claimed. Linear support is a narrow target guard and visible synchronization debt, not the retired nightly runner or full project bootstrap.
 
 Legacy source and full historical suites remain recoverable from Git history. They are not supported installation paths. The old CLI and adoption entry points fail closed. Local migration receipts and private backups are deliberately excluded from this public repository.
+
+Local checkout directory names are independent of plugin identity. Keeping an old development-folder name is supported; a Codex project display-name change does not require moving the checkout. Existing absolute path consumers can remain valid.

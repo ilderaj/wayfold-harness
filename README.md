@@ -29,6 +29,8 @@ router, MCP server, global hooks, IDE projections, or a mirrored specialist
 skill collection. Matt and other external methods are independently supplied;
 being installed does not guarantee that a model selects a skill correctly.
 
+Plugin-owned hooks automatically restore and check turn wrap-up for exact-bound tracked/planned tasks after native hook trust. Direct, unbound work receives no planning intervention. See [workflow details](docs/workflows.md).
+
 ## Build and verify the candidate
 
 ```sh
@@ -49,7 +51,7 @@ available. See the [activation contract](docs/architecture.md).
 
 The product continues the SWF lineage. Original Task IDs, UUIDs and Git history
 are retained. The target product and plugin name is `wayfold-harness`; source,
-registry, remote and local path migrations require their own verified receipts.
+registry and remote migrations require their own verified receipts. The local development folder may keep its existing name; renaming it is not required for plugin operation.
 The independent WayFold design checkout is not replaced.
 
 Figma project rules, Kami resources and personal templates belong in the user

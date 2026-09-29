@@ -166,7 +166,7 @@ export const homepageContent = {
             { title: 'Long tasks', body: 'Native Goal and continuation run long work with no second runner.' }
           ],
           [
-            { title: 'Native host', body: 'One Codex plugin. No ambient hooks or global policy installation.' },
+            { title: 'Native host', body: 'One Codex plugin. Bound-task hooks; no global policy installation.' },
             { title: 'Proof path', body: 'Source and workflow docs stay visible before anyone chooses an installation command.' }
           ]
         ]
