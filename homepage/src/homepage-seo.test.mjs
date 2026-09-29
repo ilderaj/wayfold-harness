@@ -5,8 +5,8 @@ import { existsSync, readFileSync } from 'node:fs';
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const compactHtml = html.replace(/\s+/g, ' ');
 
-const expectedUrl = 'https://ilderaj.github.io/wayfold-harness/';
-const expectedImage = 'https://ilderaj.github.io/wayfold-harness/wfh-social.png';
+const expectedUrl = 'https://vibing.paymond.me/wayfold-harness/';
+const expectedImage = 'https://vibing.paymond.me/wayfold-harness/wfh-social.png';
 const expectedTitle = 'WayFold Harness | Thin workflows for Codex';
 const expectedDescription =
   'A thin Codex plugin for durable planning, relevant quality checks, and independently supplied professional skills.';

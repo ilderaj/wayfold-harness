@@ -7,7 +7,7 @@ on:
     paths:
       - 'homepage/**'
       - '.github/workflows/homepage-deploy.yml'
-      - 'docs/install/homepage-cloudflare-worker.md'
+      - 'docs/migration.md'
   workflow_dispatch:
 
 permissions:
