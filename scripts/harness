@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-set -eu
-
-ROOT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
-exec node "$ROOT_DIR/harness/installer/commands/harness.mjs" "$@"
+# Retired executable compatibility notice; no runtime or installer fallback.
+printf '%s\n' 'This non-plugin entry is retired. Install and enable WayFold Harness through Codex. Task files are preserved; see docs/architecture.md.' >&2
+exit 64

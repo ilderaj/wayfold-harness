@@ -1,0 +1,5 @@
+# Target guard input
+
+Pass a JSON object with `authorized: true`, `coverageComplete: true`, `expected` and `observed`. Both identities contain nonempty `workspaceId`, `projectId`, `issueId` UUIDs and exact `taskId`, `taskMarker`, `productKey` strings. `expected` must come from the task binding and project policy, not copied from the observed target. `observed` comes from a fresh authenticated connector read. Supply `observedAt` as an ISO timestamp; snapshots older than five minutes or in the future are refused.
+
+The guard requires exact equality, rejects embedded credential fields, and permits only known product keys `wfh` and legacy `swf` without rewriting either. Authorization remains a Host/user decision. For project creation, ownership migration, catalog discovery, parent/child lifecycle, or bulk operations this narrow guard is insufficient: preserve the existing binding, obtain complete evidence, and validate the specific operation before proceeding. It never issues a network call.

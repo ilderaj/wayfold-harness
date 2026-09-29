@@ -3,15 +3,15 @@ import assert from 'node:assert/strict';
 import { normalizeHomepageRequestUrl } from './route-utils.mjs';
 
 test('redirects the bare homepage prefix to the slash form', () => {
-  const result = normalizeHomepageRequestUrl('https://vibing.paymond.me/superpowering-with-files');
+  const result = normalizeHomepageRequestUrl('https://vibing.paymond.me/wayfold-harness');
 
   assert.equal(result.action, 'redirect');
   assert.equal(result.status, 308);
-  assert.equal(result.url, 'https://vibing.paymond.me/superpowering-with-files/');
+  assert.equal(result.url, 'https://vibing.paymond.me/wayfold-harness/');
 });
 
 test('rewrites the homepage shell path to the asset root', () => {
-  const result = normalizeHomepageRequestUrl('https://vibing.paymond.me/superpowering-with-files/');
+  const result = normalizeHomepageRequestUrl('https://vibing.paymond.me/wayfold-harness/');
 
   assert.equal(result.action, 'asset');
   assert.equal(result.url, 'https://vibing.paymond.me/');
@@ -19,7 +19,7 @@ test('rewrites the homepage shell path to the asset root', () => {
 
 test('strips the homepage prefix from built asset requests', () => {
   const result = normalizeHomepageRequestUrl(
-    'https://vibing.paymond.me/superpowering-with-files/assets/index.js'
+    'https://vibing.paymond.me/wayfold-harness/assets/index.js'
   );
 
   assert.equal(result.action, 'asset');
@@ -28,7 +28,7 @@ test('strips the homepage prefix from built asset requests', () => {
 
 test('preserves query strings when rewriting asset requests', () => {
   const result = normalizeHomepageRequestUrl(
-    'https://vibing.paymond.me/superpowering-with-files/?utm_source=github'
+    'https://vibing.paymond.me/wayfold-harness/?utm_source=github'
   );
 
   assert.equal(result.action, 'asset');
@@ -40,4 +40,14 @@ test('rejects paths outside the homepage prefix', () => {
 
   assert.equal(result.action, 'not_found');
   assert.equal(result.url, 'https://vibing.paymond.me/other');
+});
+
+
+test('redirects legacy entry and asset paths without losing queries', () => {
+  const old = normalizeHomepageRequestUrl('https://example.com/superpowering-with-files');
+  assert.equal(old.action, 'redirect');
+  assert.equal(old.status, 308);
+  assert.equal(old.url, 'https://example.com/wayfold-harness/');
+  const asset = normalizeHomepageRequestUrl('https://example.com/superpowering-with-files/assets/app.js?v=2');
+  assert.equal(asset.url, 'https://example.com/wayfold-harness/assets/app.js?v=2');
 });

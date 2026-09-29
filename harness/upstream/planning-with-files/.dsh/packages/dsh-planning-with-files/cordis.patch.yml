@@ -1,5 +1,0 @@
-# Layer applied when a dsh profile lists this bundle (dsh plugin add).
-# The row resolves the package by name from the profile's node_modules.
-- insert:
-    - id: planning-with-files
-      name: dsh-planning-with-files

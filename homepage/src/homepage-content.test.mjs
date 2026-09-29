@@ -12,12 +12,12 @@ test('defines the approved five-section homepage flow with matching content keys
   }
 });
 
-test('locks the Trio v2 public story and CTA hierarchy', () => {
-  const githubUrl = 'https://github.com/ilderaj/superpowering-with-files';
+test('locks the WayFold public story and CTA hierarchy', () => {
+  const githubUrl = 'https://github.com/ilderaj/wayfold-harness';
   const workflowUrl = `${githubUrl}/blob/main/docs/workflows.md`;
   const readmeUrl = `${githubUrl}/blob/main/README.md`;
 
-  assert.equal(homepageContent.topbar.brandLabel, 'Superpowering With Files');
+  assert.equal(homepageContent.topbar.brandLabel, 'WayFold Harness');
   assert.deepEqual(homepageContent.topbar.links.map(({ label }) => label), ['Why', 'System', 'Proof', 'Start']);
   assert.deepEqual(homepageContent.topbar.links.map(({ href }) => href), ['#problem', '#system', '#workflow', '#start']);
   assert.equal(homepageContent.topbar.cta.label, 'View source');
@@ -25,10 +25,10 @@ test('locks the Trio v2 public story and CTA hierarchy', () => {
   assert.equal(homepageContent.topbar.github.label, 'Read workflow');
   assert.equal(homepageContent.topbar.github.href, workflowUrl);
 
-  assert.equal(homepageContent.hero.eyebrow, 'Trio v2 for Codex');
+  assert.equal(homepageContent.hero.eyebrow, 'A thin Codex plugin');
   assert.equal(homepageContent.hero.headline, 'Plan in one session. Execute with proof.');
-  assert.match(homepageContent.hero.lede, /Codex is the managed native host/i);
-  assert.match(homepageContent.hero.lede, /generic\/manual fallback/i);
+  assert.match(homepageContent.hero.lede, /three planning files/i);
+  assert.match(homepageContent.hero.lede, /Codex handles execution and permissions/i);
   assert.deepEqual(homepageContent.hero.actions.map(({ label }) => label), ['View source', 'Read workflow']);
   assert.deepEqual(homepageContent.hero.actions.map(({ href }) => href), [githubUrl, workflowUrl]);
 
@@ -38,18 +38,18 @@ test('locks the Trio v2 public story and CTA hierarchy', () => {
   assert.equal(homepageContent.start.cta.secondaryAction.href, githubUrl);
 });
 
-test('captures every required Trio v2 public boundary without retired claims', () => {
+test('captures every required WayFold public boundary without retired claims', () => {
   const publicStory = JSON.stringify(homepageContent);
 
   for (const requiredFact of [
     'task_plan.md',
     'findings.md',
     'progress.md',
-    'dev, office, or safety',
+    'quality references only when the task needs them',
     'Quick and tracked',
     'current-round reasoning choice',
     'Host owns lifecycle, permissions, and continuation',
-    'candidates until the main session or Chief accepts them',
+    'candidates until the main session accepts them',
     'Requested model and effort are intent',
     'actual is unknown without Host evidence',
     'Native Goal and continuation',
@@ -77,10 +77,10 @@ test('captures every required Trio v2 public boundary without retired claims', (
   assert.deepEqual(homepageContent.system.lanes, ['quick', 'tracked', 'deep']);
   assert.deepEqual(homepageContent.start.commands, [
     'codex plugin list --json',
-    'npm run plugin:verify',
-    'npm run verify:trio',
-    './scripts/harness trio',
-    './scripts/harness checkpoint',
-    './scripts/harness token-audit'
+    'npm run verify:wfh',
+    'npm run wfh:build',
+    '$wayfold-harness:wayfold',
+    '$wayfold-harness:planning-with-files',
+    '$wayfold-harness:linear-work-control'
   ]);
 });

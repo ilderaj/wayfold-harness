@@ -1,5 +1,0 @@
-- insert:
-    - id: agent-presets
-      name: '@deepseek-ai/dsh-agent-presets'
-      config:
-        default: swf-spike

@@ -1,7 +1,13 @@
-export const HOMEPAGE_PREFIX = '/superpowering-with-files';
+export const HOMEPAGE_PREFIX = '/wayfold-harness';
+const LEGACY_PREFIX = '/superpowering-with-files';
 
 export function normalizeHomepageRequestUrl(urlLike) {
   const url = new URL(urlLike);
+
+  if (url.pathname === LEGACY_PREFIX || url.pathname.startsWith(`${LEGACY_PREFIX}/`)) {
+    url.pathname = HOMEPAGE_PREFIX + (url.pathname.slice(LEGACY_PREFIX.length) || '/');
+    return { action: 'redirect', status: 308, url: url.toString() };
+  }
 
   if (url.pathname === HOMEPAGE_PREFIX) {
     url.pathname = `${HOMEPAGE_PREFIX}/`;

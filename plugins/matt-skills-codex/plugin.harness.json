@@ -1,7 +1,0 @@
-{
-  "target": "matt-skills-codex",
-  "name": "harness-matt-skills-codex-plugin",
-  "displayName": "Matt Pocock Skills for Codex",
-  "version": "2.0.1",
-  "description": "Optional Matt Pocock skills for Codex."
-}

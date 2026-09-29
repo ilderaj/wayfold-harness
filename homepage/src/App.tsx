@@ -212,8 +212,8 @@ export default function App() {
   return (
     <>
       <nav className="nav shell" aria-label="Main navigation">
-        <a className="brand" href={homepageContent.topbar.brandHref} aria-label="Superpowering With Files home">
-          <span className="mark">SWF</span>
+        <a className="brand" href={homepageContent.topbar.brandHref} aria-label="WayFold Harness home">
+          <span className="mark">WFH</span>
           <span>{homepageContent.topbar.brandLabel}</span>
         </a>
         <div className="nav-links">
